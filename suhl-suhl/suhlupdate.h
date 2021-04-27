@@ -26,6 +26,9 @@ public:
 	void btranr(CZLPVector &aq);
 
 	int search_last_nonzero_position(CZLPVector &aq);
+
+	void create_two_pointer();
+	void update_two_pointer();
 	//寻找需要插入到哪一列
 	int search_column(int position);
 
@@ -71,6 +74,9 @@ private:
 	vector<int> URstart;
 	vector<int> URend;
 	vector<int> URspace;
+
+	vector<int> cptr;
+	vector<int> rptr;
 
 	//R矩阵,每一行为一个eta矩阵
 	vector<double> Rpivotvalues;

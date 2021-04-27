@@ -28,7 +28,7 @@ int main()
 	vector<double> UPivotValue({ 1, 1, 1, 1, 1 });
 	vector<int> URspace(5, 0);
 	suhl.copy_U(UPivotValue, UValue, UIndex, UStart, UEnd, URValue, URIndex, URStart, UREnd, URspace, UPivotLookup, UPivot);
-
+	suhl.create_two_pointer();
 	vector<double> res = { 0, 1, 0, 1, 0 };
 	double *aq1 = new double[RowNum];
 	for (int i = 0; i < res.size(); i++)

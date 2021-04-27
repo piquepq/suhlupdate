@@ -566,3 +566,40 @@ void suhlupdate::show()
 	matrix << endl;
 	matrix.close();
 }
+
+
+void suhlupdate::create_two_pointer() {
+	cptr.assign(Uindex.size()*1.2, -1);
+
+	rptr.assign(URindex.size()*1.2, -1);
+
+	//cptr与uindex以及uvalues的元素一一对应，每次改变时3者同时改变,值为-1的元素表示为空
+
+	for(int i=0;i<RowNum;i++)
+	{
+	//一列一列的处理
+		for (int j = Ustart[i]; j < Uend[i]; j++) {
+			int row = Uindex[j];
+			for (int k = URstart[row]; k < URend[row]; k++) {
+				if (URindex[k] == i) {
+					cptr[j] = k;
+					break;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < RowNum; i++)
+	{
+		//一行一行的处理
+		for (int j = URstart[i]; j < URend[i]; j++) {
+			int col = URindex[j];
+			for (int k = Ustart[col]; k < Uend[col]; k++) {
+				if (Uindex[k] == i) {
+					rptr[j] = k;
+					break;
+				}
+			}
+		}
+	}
+}
+void update_two_pointer();
